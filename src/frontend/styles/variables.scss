@@ -1,0 +1,13 @@
+$primary-color: #071d3d;
+$gradient-color: linear-gradient(
+  135deg,
+  rgba(0, 0, 0, 0.5) 0%,
+  rgba(255, 255, 255, 0.2) 25%,
+  rgb(0, 0, 0, 0.4) 75%,
+  rgba(255, 255, 255, 0) 100%
+);
+
+$dot-size: 0.7rem;
+$icon-view-size: 45px;
+
+$transition: 0.5s;
