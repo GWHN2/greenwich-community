@@ -1,7 +1,12 @@
 {
   "canisters": {
-    "hello": {
-      "main": "src/backend/service/Hello.mo"
+    "token":{
+      "type" : "motoko",
+      "main" : "src/backend/token/main.mo"
+    },
+    "nft":{
+      "type" : "motoko",
+      "main" : "src/backend/nft/main.mo"
     }
   },
   "defaults": {
