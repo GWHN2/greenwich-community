@@ -1,0 +1,166 @@
+.container-table {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* padding: 30px; */
+  table {
+    border-spacing: 1;
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+  }
+  table td,
+  table th {
+    padding-left: 20px;
+    position: relative;
+  }
+  table thead tr {
+    min-height: 70px;
+    height: 70px;
+    background: #dddddd;
+  }
+  table tbody tr {
+    min-height: 60px;
+    height: 60px;
+  }
+  table tbody tr:last-child {
+    border: 0;
+  }
+  table td,
+  table th {
+    text-align: left;
+  }
+  table td.l,
+  table th.l {
+    text-align: right;
+  }
+  table td.c,
+  table th.c {
+    text-align: center;
+  }
+  table td.r,
+  table th.r {
+    text-align: center;
+  }
+
+  .table-head th {
+    font-family: OpenSans-Regular;
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: unset;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #ffffff;
+  }
+
+  tbody tr {
+    font-family: OpenSans-Regular;
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: unset;
+  }
+
+  @media screen and (max-width: 992px) {
+    table {
+      display: block;
+    }
+    table > *,
+    table tr,
+    table td,
+    table th {
+      display: block;
+    }
+    table thead {
+      display: none;
+    }
+    table tbody tr {
+      height: auto;
+      padding: 10px 0;
+    }
+    table tbody tr td {
+      padding-left: 30%;
+      margin-bottom: 10px;
+    }
+    table tbody tr td:last-child {
+      margin-bottom: 0;
+    }
+    table tbody tr td:before {
+      font-family: OpenSans-Regular;
+      font-size: 14px;
+      color: #222;
+      line-height: 1.2;
+      font-weight: unset;
+      position: absolute;
+      width: 30%;
+      left: 5px;
+      top: 0;
+    }
+    tbody tr td:nth-child(1):before {
+      content: "Lecturer";
+    }
+    tbody tr td:nth-child(2):before {
+      content: "Course";
+    }
+    tbody tr td:nth-child(3):before {
+      content: "Rating";
+    }
+    /* table tbody tr td */
+    tbody td {
+      padding: 1px;
+      // border-top: 1px solid #ccc;
+    }
+    tr:nth-child(even) td {
+      border-bottom: 1px solid #fff;
+    }
+    tr:nth-child(odd) td {
+      border-bottom: 1px solid #ccc;
+    }
+
+    tbody tr {
+      font-size: 14px;
+    }
+
+    .pagination {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .pagination div,
+    input {
+      margin: 10px;
+      width: 100%;
+    }
+
+    .pagination input,
+    .directional {
+      margin: 0;
+    }
+    /* .pagination input {
+        width: 100%;
+    } */
+  }
+  th div {
+    min-height: 60px;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+  }
+  @media (max-width: 576px) {
+    /* .container-table {
+        padding-left: 15px;
+        padding-right: 15px;
+      } */
+  }
+}

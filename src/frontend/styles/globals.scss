@@ -1,0 +1,44 @@
+@use "variables";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.plug-gradient {
+  background: variables.$gradient-plug;
+}
+
+.gradient-text {
+  background: -webkit-linear-gradient(variables.$primary-color, #abafd3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-background {
+  background: -webkit-linear-gradient(45deg, variables.$primary-color, #abafd3);
+}
+.gradient-background-secondary {
+  background: -webkit-linear-gradient(variables.$secondary-color, #ffc399);
+}
+
+.dropdown-container:hover .dropdown-menu {
+  visibility: visible;
+  transform: translateY(0.5rem);
+  opacity: 1;
+  transition: all 0.4s ease-in;
+}
+.dropdown-container {
+  position: relative;
+  .dropdown-menu {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transition: all 0.3s ease-out;
+  }
+}

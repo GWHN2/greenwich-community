@@ -1,10 +1,14 @@
-$primary-color: #071d3d;
-$gradient-color: linear-gradient(
-  135deg,
-  rgba(0, 0, 0, 0.5) 0%,
-  rgba(255, 255, 255, 0.2) 25%,
-  rgb(0, 0, 0, 0.4) 75%,
-  rgba(255, 255, 255, 0) 100%
+$primary-color: #2c3791;
+$secondary-color: #ff6900;
+$gradient-plug: linear-gradient(
+  45deg,
+  #ffe700,
+  #fc828e,
+  #fa51d3,
+  #a188d4,
+  #10d9ed,
+  #33eca0,
+  #46ff47
 );
 
 $dot-size: 0.7rem;

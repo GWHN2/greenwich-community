@@ -1,23 +1,18 @@
 import Head from "next/head";
 import Image from "next/image";
-import { GreetingSection } from "../frontend/components/GreetingSection";
 import logo from "../public/images/logo.png";
+import { APP } from "../frontend/enum";
+
 function HomePage() {
   return (
     <div className="">
       <Head>
-        <title>Internet Computer</title>
+        <title>{APP.APP_NAME} | University of Greenwich Community</title>
       </Head>
-      <main className="container h-screen w-screen mx-auto flex flex-col items-center justify-center">
-        <h3 className="text-xl font-semibold">
-          Next.js Internet Computer Starter Template!
-        </h3>
-
-        <div className="relative w-72 lg:w-96 h-40">
+      <main className="container flex flex-col items-center justify-center">
+        <div className="relative h-40 w-72 lg:w-96">
           <Image src={logo} alt="logo" layout="fill" objectFit="contain" />
         </div>
-
-        <GreetingSection />
       </main>
     </div>
   );
