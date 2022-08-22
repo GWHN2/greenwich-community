@@ -2,11 +2,10 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import { canisterId } from "../../declarations/hello";
 import logo from "../../public/images/plug.png";
 import { SessionDataState } from "../data/globalState";
 import { SessionData } from "../data/type";
-import { host } from "../service/actor-locator";
+import { canisterId, host } from "../service/actor-locator";
 import { shortenAddress } from "../utils/stringsFunction";
 
 const ConnectToPlug = () => {

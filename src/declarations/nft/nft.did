@@ -1,0 +1,58 @@
+type metadata = 
+ record {
+   description: text;
+   name: text;
+   url: text;
+ };
+type TxReceipt = 
+ variant {
+   Err: ApiError;
+   Ok: bool;
+ };
+type TokenId = nat;
+type NftResp = 
+ record {
+   description: text;
+   id: nat;
+   name: text;
+   url: text;
+ };
+type Nft = 
+ service {
+   approve: (TokenId, principal) -> ();
+   balanceOf: (principal) -> (BalanceResult) query;
+   getAllNfts: () -> (vec record {
+                            TokenId;
+                            metadata;
+                          }) query;
+   getApproved: (TokenId) -> (principal) query;
+   getMyNfts: () -> (vec NftResp) query;
+   getName: () -> (text) query;
+   getOwnerCanister: () -> (principal) query;
+   getSymbol: () -> (text) query;
+   getTokenInfo: (TokenId) -> (opt metadata) query;
+   isApprovedForAll: (principal, principal) -> (bool) query;
+   mint: (metadata) -> (MintResult);
+   ownerOf: (TokenId) -> (opt principal) query;
+   setApprovalForAll: (principal, bool) -> ();
+   transfer: (TokenId, principal) -> (TxReceipt);
+   transferFrom: (principal, principal, nat) -> ();
+ };
+type MintResult = 
+ variant {
+   Err: ApiError;
+   Ok: nat;
+ };
+type BalanceResult = 
+ variant {
+   Err: ApiError;
+   Ok: nat;
+ };
+type ApiError = 
+ variant {
+   InvalidAddress;
+   InvalidTokenId;
+   Other;
+   Unauthorized;
+ };
+service : () -> Nft

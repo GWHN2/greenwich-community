@@ -1,0 +1,14 @@
+// Version: 1.0.0
+type TokenId = Nat;
+type metadata = {description : Text; name : Text; url : Text};
+actor {
+  stable var TokenCounter : Nat;
+  stable var addressApproveAllTmp : [(Principal, [Principal])];
+  stable var balancesTmp : [(Principal, Nat)];
+  stable var name : Text;
+  stable var owner : Principal;
+  stable var symbol : Text;
+  stable var tokenIdToApproveTmp : [(TokenId, Principal)];
+  stable var tokenIdToMetadataTmp : [(TokenId, metadata)];
+  stable var tokenIdToOwnerTmp : [(TokenId, Principal)]
+};

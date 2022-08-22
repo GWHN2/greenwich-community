@@ -17,7 +17,8 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "export": "next export",
-    "sync:hello": "DFX_NETWORK=local && rsync -avr .dfx/$(echo ${DFX_NETWORK:-'**'})/canisters/hello --exclude='idl/' --exclude='*.wasm' --delete src/declarations"
+    "sync:nft": "DFX_NETWORK=local && rsync -avr .dfx/$(echo ${DFX_NETWORK:-'**'})/canisters/nft --exclude='idl/' --exclude='*.wasm' --delete src/declarations",
+    "sync:token": "DFX_NETWORK=local && rsync -avr .dfx/$(echo ${DFX_NETWORK:-'**'})/canisters/token --exclude='idl/' --exclude='*.wasm' --delete src/declarations"
   },
   "dependencies": {
     "@dfinity/agent": "^0.12.1",

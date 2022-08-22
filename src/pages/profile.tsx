@@ -26,7 +26,7 @@ function Grades() {
       <Head>
         <title>{APP.APP_NAME} | View Profile</title>
       </Head>
-      <main className="container flex grid flex-wrap justify-around grid-flow-col grid-rows-3 gap-4 mt-32">
+      <main className="container grid justify-around grid-flow-col grid-rows-3 gap-4 mt-32">
         <div className="flex justify-center mb-10 flex-nowrap">
           <Profile {...profile} />
           <div className="ml-10 space-y-4">
