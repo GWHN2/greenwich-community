@@ -8,7 +8,7 @@ import {
 } from "../../declarations/nft";
 
 export const host = process.env.NEXT_PUBLIC_IC_HOST;
-export const canisterId = tokenCanisterId || nftCanisterId;
+export const canisterId = { token: tokenCanisterId, nft: nftCanisterId };
 
 export const makeActor = (canisterId: any, createActor: any) => {
   return createActor(canisterId, {

@@ -33,7 +33,7 @@ const ConnectToPlug = () => {
   const onBntConnectPlug = async () => {
     try {
       if (!isConnected) {
-        const whitelist = [canisterId];
+        const whitelist = [canisterId.token];
         const onConnectionUpdate = async () => {};
         const _publicKey = await window.ic.plug.requestConnect({
           whitelist,
