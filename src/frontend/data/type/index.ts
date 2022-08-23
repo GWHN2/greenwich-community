@@ -27,3 +27,12 @@ export type UserData = {
   password: string;
   rules: role[];
 };
+
+export type EventData = {
+  _id: string;
+  name: string;
+  description: string;
+  imageUrl: string;
+  code: string;
+  tokens: number;
+};
