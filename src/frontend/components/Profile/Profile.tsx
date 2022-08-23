@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import Button from "../common/Button";
 import { useRecoilValue } from "recoil";
-import { UserRuleState } from "../../data/globalState";
+import { UserRoleState } from "../../data/globalState";
 
 interface Props {
   image: any;
@@ -21,7 +21,7 @@ const Profile = ({
   numOfToken,
 }: Props) => {
   const router = useRouter();
-  const userRule = useRecoilValue(UserRuleState);
+  const userRole = useRecoilValue(UserRoleState);
 
   return (
     <div className="relative bg-white rounded-lg shadow-lg">
@@ -42,7 +42,7 @@ const Profile = ({
         <div className="flex flex-col">
           <Label text={dateOfBirth} label="Date of Birth" />
           <Label text={StudentID} label="Student ID" />
-          {userRule === "Student" && (
+          {userRole === "Student" && (
             <div>
               <Label
                 text={numOfToken.toString()}
@@ -58,7 +58,7 @@ const Profile = ({
               </Button>
             </div>
           )}
-          {userRule === "Admin" && (
+          {userRole === "Admin" && (
             <div>
               <Label
                 text={numOfToken.toString()}
@@ -74,7 +74,7 @@ const Profile = ({
               </Button>
             </div>
           )}
-          {userRule === "Employer" && (
+          {userRole === "Employer" && (
             <div>
               <Button
                 onClick={() => {

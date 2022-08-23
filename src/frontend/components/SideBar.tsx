@@ -15,14 +15,14 @@ import {
 import Image from "next/image";
 import { useMemo } from "react";
 import { useRecoilValue } from "recoil";
-import { UserRuleState } from "../data/globalState";
+import { UserRoleState } from "../data/globalState";
 import logo from "../../public/images/logo.png";
 import AccordionMenu from "./AccordionMenu";
 
 const SideBar = () => {
-  const userRule = useRecoilValue(UserRuleState);
+  const userRole = useRecoilValue(UserRoleState);
   const getMenuItem = useMemo(() => {
-    switch (userRule.toLocaleLowerCase()) {
+    switch (userRole.toLocaleLowerCase()) {
       case "admin":
         return [
           {
@@ -116,7 +116,7 @@ const SideBar = () => {
           },
         ];
     }
-  }, [userRule]);
+  }, [userRole]);
   return (
     <aside
       id="SideBar"

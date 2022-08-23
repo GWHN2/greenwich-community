@@ -1,5 +1,10 @@
 import Link from "next/link";
+import router from "next/router";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
+import { useSetRecoilState } from "recoil";
+import API from "../../data/api";
+import { UserDataState, UserRoleState } from "../../data/globalState";
 import Button from "../common/Button";
 import HookForm from "../common/HookForm";
 import Titles from "../common/Titles";
@@ -34,6 +39,30 @@ const RegisterFrom = () => {
   ];
 
   const [formValues, setFormValues] = useState(defaultValues);
+  const [loading, setLoading] = useState(false);
+  const setUserData = useSetRecoilState(UserDataState);
+  const setUserRole = useSetRecoilState(UserRoleState);
+
+  const handleSignup = async () => {
+    setLoading(true);
+    try {
+      const response = await API.post("/auth/signup", {
+        name: formValues.fullName,
+        username: formValues.username,
+        password: formValues.password,
+        roles: "Student",
+      });
+      const _userData = response.data?.data;
+      setUserData(_userData);
+      setUserRole(_userData?.roles[0]?.name);
+      toast.success("Signup Successful as " + _userData.username);
+      router.push("/");
+    } catch (error) {
+      console.log(error);
+    }
+    setLoading(false);
+  };
+
   return (
     <div className="w-full p-6 my-10 bg-white rounded-lg lg:w-1/2 drop-shadow-xl">
       <Titles title="Register" className="text-center" />
@@ -51,13 +80,7 @@ const RegisterFrom = () => {
           </Link>
         </div>
         <div className="flex justify-center">
-          <Button
-            onClick={() => {
-              console.log(formValues);
-            }}
-          >
-            Login
-          </Button>
+          <Button onClick={handleSignup}>Login</Button>
         </div>
       </div>
     </div>

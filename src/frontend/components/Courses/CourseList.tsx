@@ -1,10 +1,10 @@
 import { useRecoilValue } from "recoil";
-import { UserRuleState } from "../../data/globalState";
+import { UserRoleState } from "../../data/globalState";
 import { importFolder } from "../../utils/importFolder";
 import Course from "./Course";
 
 const CourseList = () => {
-  const userRule = useRecoilValue(UserRuleState);
+  const userRole = useRecoilValue(UserRoleState);
 
   const Images = importFolder(
     require.context(
@@ -21,9 +21,9 @@ const CourseList = () => {
       image: Images["1.png"],
       lecturer: "courses-",
       value: 10,
-      url: `${userRule === "Admin" ? "/admin/courses" : "/courses"}/courses-1`,
+      url: `${userRole === "Admin" ? "/admin/courses" : "/courses"}/courses-1`,
       editUrl: `${
-        userRule === "Admin" ? "/admin/courses" : "/courses"
+        userRole === "Admin" ? "/admin/courses" : "/courses"
       }/courses-1/edit`,
     },
     {
@@ -32,9 +32,9 @@ const CourseList = () => {
       image: Images["2.png"],
       lecturer: "courses-",
       value: 10,
-      url: `${userRule === "Admin" ? "/admin/courses" : "/courses"}/courses-2`,
+      url: `${userRole === "Admin" ? "/admin/courses" : "/courses"}/courses-2`,
       editUrl: `${
-        userRule === "Admin" ? "/admin/courses" : "/courses"
+        userRole === "Admin" ? "/admin/courses" : "/courses"
       }/courses-2/edit`,
     },
     {
@@ -43,9 +43,9 @@ const CourseList = () => {
       image: Images["3.jpg"],
       lecturer: "courses-",
       value: 10,
-      url: `${userRule === "Admin" ? "/admin/courses" : "/courses"}/courses-3`,
+      url: `${userRole === "Admin" ? "/admin/courses" : "/courses"}/courses-3`,
       editUrl: `${
-        userRule === "Admin" ? "/admin/courses" : "/courses"
+        userRole === "Admin" ? "/admin/courses" : "/courses"
       }/courses-3/edit`,
     },
     {
@@ -54,9 +54,9 @@ const CourseList = () => {
       image: Images["4.jpg"],
       lecturer: "courses-",
       value: 10,
-      url: `${userRule === "Admin" ? "/admin/courses" : "/courses"}/courses-4`,
+      url: `${userRole === "Admin" ? "/admin/courses" : "/courses"}/courses-4`,
       editUrl: `${
-        userRule === "Admin" ? "/admin/courses" : "/courses"
+        userRole === "Admin" ? "/admin/courses" : "/courses"
       }/courses-4/edit`,
     },
     {
@@ -65,9 +65,9 @@ const CourseList = () => {
       image: Images["5.png"],
       lecturer: "courses-",
       value: 10,
-      url: `${userRule === "Admin" ? "/admin/courses" : "/courses"}/courses-5`,
+      url: `${userRole === "Admin" ? "/admin/courses" : "/courses"}/courses-5`,
       editUrl: `${
-        userRule === "Admin" ? "/admin/courses" : "/courses"
+        userRole === "Admin" ? "/admin/courses" : "/courses"
       }/courses-5/edit`,
     },
   ];

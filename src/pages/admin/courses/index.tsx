@@ -6,11 +6,11 @@ import Button from "../../../frontend/components/common/Button";
 import { CourseList } from "../../../frontend/components/Courses";
 import {
   ShowingModalState,
-  UserRuleState,
+  UserRoleState,
 } from "../../../frontend/data/globalState";
 
 function Courses() {
-  const userRule = useRecoilValue(UserRuleState);
+  const userRole = useRecoilValue(UserRoleState);
   const setShowingModal = useSetRecoilState(ShowingModalState);
   return (
     <div className="h-full ">
@@ -18,7 +18,7 @@ function Courses() {
         <title>{APP.APP_NAME} | Admin | Manage Courses</title>
       </Head>
       <main className="container flex flex-col items-center justify-center mt-32">
-        {userRule === "Admin" ? (
+        {userRole === "Admin" ? (
           <Button
             className="px-8"
             onClick={() => setShowingModal("ManageCourse")}

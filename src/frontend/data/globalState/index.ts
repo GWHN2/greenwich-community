@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
-import { UserRule, EditingItem, SessionData } from "../type";
+import { UserRole, EditingItem, SessionData, UserData } from "../type";
 
 const { persistAtom } = recoilPersist();
 export const SessionDataState = atom({
@@ -23,13 +23,19 @@ export const ShowingModalState = atom({
   default: "",
 });
 
-export const UserRuleState = atom({
-  key: "UserRuleState",
-  default: "Student" as UserRule,
+export const UserRoleState = atom({
+  key: "UserRoleState",
+  default: "Student" as UserRole,
   effects_UNSTABLE: [persistAtom],
 });
 
 export const EditingItemState = atom({
   key: "EditingItemState",
   default: {} as EditingItem,
+});
+
+export const UserDataState = atom({
+  key: "UserDataState",
+  default: {} as UserData,
+  effects_UNSTABLE: [persistAtom],
 });

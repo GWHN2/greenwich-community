@@ -1,11 +1,11 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
-import { UserRuleState } from "../../data/globalState";
+import { UserRoleState } from "../../data/globalState";
 import { importFolder } from "../../utils/importFolder";
 import Course from "../Courses/Course";
 
 const EventList = () => {
-  const userRule = useRecoilValue(UserRuleState);
+  const userRole = useRecoilValue(UserRoleState);
 
   const Images = importFolder(
     require.context(
@@ -22,9 +22,9 @@ const EventList = () => {
       image: Images["1.png"],
       lecturer: "events-",
       value: 10,
-      url: `${userRule === "Admin" ? "/admin/events" : "/events"}/events-1`,
+      url: `${userRole === "Admin" ? "/admin/events" : "/events"}/events-1`,
       editUrl: `${
-        userRule === "Admin" ? "/admin/events" : "/events"
+        userRole === "Admin" ? "/admin/events" : "/events"
       }/events-1/edit`,
     },
     {
@@ -33,9 +33,9 @@ const EventList = () => {
       image: Images["2.png"],
       lecturer: "events-",
       value: 10,
-      url: `${userRule === "Admin" ? "/admin/events" : "/events"}/events-2`,
+      url: `${userRole === "Admin" ? "/admin/events" : "/events"}/events-2`,
       editUrl: `${
-        userRule === "Admin" ? "/admin/events" : "/events"
+        userRole === "Admin" ? "/admin/events" : "/events"
       }/events-2/edit`,
     },
     {
@@ -44,9 +44,9 @@ const EventList = () => {
       image: Images["3.jpg"],
       lecturer: "events-",
       value: 10,
-      url: `${userRule === "Admin" ? "/admin/events" : "/events"}/events-3`,
+      url: `${userRole === "Admin" ? "/admin/events" : "/events"}/events-3`,
       editUrl: `${
-        userRule === "Admin" ? "/admin/events" : "/events"
+        userRole === "Admin" ? "/admin/events" : "/events"
       }/events-3/edit`,
     },
     {
@@ -55,9 +55,9 @@ const EventList = () => {
       image: Images["4.jpg"],
       lecturer: "events-",
       value: 10,
-      url: `${userRule === "Admin" ? "/admin/events" : "/events"}/events-4`,
+      url: `${userRole === "Admin" ? "/admin/events" : "/events"}/events-4`,
       editUrl: `${
-        userRule === "Admin" ? "/admin/events" : "/events"
+        userRole === "Admin" ? "/admin/events" : "/events"
       }/events-4/edit`,
     },
     {
@@ -66,9 +66,9 @@ const EventList = () => {
       image: Images["5.png"],
       lecturer: "events-",
       value: 10,
-      url: `${userRule === "Admin" ? "/admin/events" : "/events"}/events-5`,
+      url: `${userRole === "Admin" ? "/admin/events" : "/events"}/events-5`,
       editUrl: `${
-        userRule === "Admin" ? "/admin/events" : "/events"
+        userRole === "Admin" ? "/admin/events" : "/events"
       }/events-5/edit`,
     },
   ];

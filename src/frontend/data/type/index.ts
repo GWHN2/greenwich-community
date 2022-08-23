@@ -1,6 +1,6 @@
 import { HttpAgent } from "@dfinity/agent";
 
-export type UserRule = "Student" | "Admin" | "Employer";
+export type UserRole = "Student" | "Admin" | "Employer";
 
 export type EditingItem = {
   id?: string;
@@ -12,3 +12,18 @@ export type SessionData = {
   principalId: string;
   accountId: string;
 } | null;
+
+export type role = {
+  _id: string;
+  name: UserRole;
+  code: string;
+};
+
+export type UserData = {
+  _id: string;
+  access_token: string;
+  name: string;
+  username: string;
+  password: string;
+  rules: role[];
+};

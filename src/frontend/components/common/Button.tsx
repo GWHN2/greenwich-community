@@ -17,7 +17,7 @@ const Button = ({
 }: IButtonProps) => {
   return (
     <div
-      className={`px-2 py-2 rounded-lg ${
+      className={`px-2 py-2 rounded-lg cursor-pointer ${
         disabled ? "bg-gray-400" : " bg-secondary-400"
       } my-5 flex items-center justify-center ${layoutClassName}`}
     >

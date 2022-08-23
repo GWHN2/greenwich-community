@@ -1,10 +1,16 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { toast } from "react-toastify";
+import { useSetRecoilState } from "recoil";
+import API from "../../data/api";
+import { UserDataState, UserRoleState } from "../../data/globalState";
 import Button from "../common/Button";
 import HookForm from "../common/HookForm";
 import Titles from "../common/Titles";
 
 const LoginFrom = () => {
+  const router = useRouter();
   const defaultValues = {
     username: "",
     password: "",
@@ -21,8 +27,29 @@ const LoginFrom = () => {
       type: "password",
     },
   ];
-
   const [formValues, setFormValues] = useState(defaultValues);
+  const [loading, setLoading] = useState(false);
+  const setUserData = useSetRecoilState(UserDataState);
+  const setUserRole = useSetRecoilState(UserRoleState);
+
+  const handleLogin = async () => {
+    setLoading(true);
+    try {
+      const response = await API.post("/auth/login", {
+        username: formValues.username,
+        password: formValues.password,
+      });
+      const _userData = response.data?.data;
+      setUserData(_userData);
+      setUserRole(_userData?.roles[0]?.name);
+      toast.success("Login Successful as " + _userData.username);
+      router.push("/");
+    } catch (error) {
+      console.log(error);
+    }
+    setLoading(false);
+  };
+
   return (
     <div className="w-full p-6 my-10 bg-white rounded-lg lg:w-1/2 drop-shadow-xl">
       <Titles title="Login" className="text-center" />
@@ -43,11 +70,7 @@ const LoginFrom = () => {
           </Link>
         </div>
         <div className="flex justify-center">
-          <Button
-            onClick={() => {
-              console.log(formValues);
-            }}
-          >
+          <Button onClick={handleLogin} loading={loading}>
             Login
           </Button>
         </div>

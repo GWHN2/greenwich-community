@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRecoilValue } from "recoil";
-import { UserRuleState } from "../../data/globalState";
+import { UserRoleState } from "../../data/globalState";
 import Button from "../common/Button";
 
 interface CourseProps {
@@ -15,7 +15,7 @@ interface CourseProps {
 }
 
 const Course = (props: CourseProps) => {
-  const userRule = useRecoilValue(UserRuleState);
+  const userRole = useRecoilValue(UserRoleState);
 
   const { id, course, image, lecturer, value, url, editUrl } = props;
 
@@ -33,7 +33,7 @@ const Course = (props: CourseProps) => {
       <span className="flex justify-end w-full text-lg font-semibold text-green-400">
         {value} Token
       </span>
-      {userRule === "Admin" ? (
+      {userRole === "Admin" ? (
         <div className="flex flex-row space-x-4">
           <Link href={editUrl}>
             <Button className="px-8">Edit</Button>
