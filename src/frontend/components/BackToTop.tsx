@@ -1,4 +1,4 @@
-import { ChevronDoubleUpIcon } from "@heroicons/react/outline";
+import { ChevronDoubleUpIcon } from "@heroicons/react/24/outline";
 import { useEffect } from "react";
 import Scroll from "react-scroll";
 import useScroll from "../hooks/useScroll";

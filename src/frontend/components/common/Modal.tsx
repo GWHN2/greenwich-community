@@ -1,4 +1,3 @@
-import { XIcon } from "@heroicons/react/solid";
 import React, { useEffect, useState } from "react";
 import Button from "./Button";
 
@@ -36,15 +35,6 @@ const Modal = (props: IProps) => {
       >
         <div className="flex items-center justify-between p-5 ">
           <h3 className="text-xl">{title}</h3>
-          <button
-            className="float-right p-1 text-black bg-gray-300 rounded-full"
-            onClick={() => {
-              setShowModal(false);
-              if (onClose) onClose();
-            }}
-          >
-            <XIcon className="w-6" />
-          </button>
         </div>
         <div className="relative flex-auto p-6">{children}</div>
       </div>

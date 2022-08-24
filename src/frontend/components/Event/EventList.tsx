@@ -4,6 +4,7 @@ import { useRecoilValue } from "recoil";
 import API from "../../data/api";
 import { UserDataState, UserRoleState } from "../../data/globalState";
 import { importFolder } from "../../utils/importFolder";
+import RefetchButton from "../common/RefetchButton";
 import Course from "../Courses/Course";
 
 const EventList = () => {
@@ -33,9 +34,9 @@ const EventList = () => {
   });
   console.log(events);
 
-  if (isLoading) {
-    return;
-  }
+  // if (isLoading || isError) {
+  return <RefetchButton refetch={refetch} loading={isLoading} />;
+  // }
 
   return (
     <div>

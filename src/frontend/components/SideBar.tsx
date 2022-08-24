@@ -1,17 +1,17 @@
 import {
+  ArrowsRightLeftIcon,
+  BanknotesIcon,
   BookOpenIcon,
-  CashIcon,
   ClockIcon,
-  DocumentReportIcon,
+  DocumentChartBarIcon,
   HomeIcon,
   InformationCircleIcon,
   NewspaperIcon,
   ShoppingBagIcon,
   SparklesIcon,
   StarIcon,
-  SwitchHorizontalIcon,
   UserCircleIcon,
-} from "@heroicons/react/outline";
+} from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { useMemo } from "react";
 import { useRecoilValue } from "recoil";
@@ -65,7 +65,7 @@ const SideBar = () => {
           },
           {
             title: "Grades",
-            icon: <DocumentReportIcon />,
+            icon: <DocumentChartBarIcon />,
             path: "/grades",
           },
           {
@@ -80,7 +80,7 @@ const SideBar = () => {
           },
           {
             title: "Transfer Tokens",
-            icon: <SwitchHorizontalIcon />,
+            icon: <ArrowsRightLeftIcon />,
             path: "/transfer",
           },
         ];
@@ -88,7 +88,7 @@ const SideBar = () => {
         return [
           {
             title: "Deposit for companies",
-            icon: <CashIcon />,
+            icon: <BanknotesIcon />,
             path: "/employer/deposit-for-companies",
           },
           {

@@ -1,4 +1,4 @@
-import { EyeIcon, EyeOffIcon } from "@heroicons/react/outline";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { ChangeEvent, useState } from "react";
 
 interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -25,7 +25,7 @@ const TextInput = ({
               setIsShowPassword(!isShowPassword);
             }}
           >
-            {isShowPassword ? <EyeIcon /> : <EyeOffIcon />}
+            {isShowPassword ? <EyeIcon /> : <EyeSlashIcon />}
           </div>
         )}
         <input

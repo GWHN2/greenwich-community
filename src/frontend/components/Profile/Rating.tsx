@@ -1,4 +1,4 @@
-import { StarIcon } from "@heroicons/react/outline";
+import { StarIcon } from "@heroicons/react/24/outline";
 
 interface Props {
   rating: number; //2.5

@@ -6,14 +6,14 @@ import {
   useGlobalFilter,
   usePagination,
 } from "react-table";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/outline";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import GlobalFilter from "./GlobalFilter";
 import Button from "./Button";
 import {
-  ArrowSmDownIcon,
-  ArrowSmUpIcon,
-  SwitchVerticalIcon,
-} from "@heroicons/react/solid";
+  ArrowDownIcon,
+  ArrowUpIcon,
+  ArrowsRightLeftIcon,
+} from "@heroicons/react/24/solid";
 
 const Table = ({ columns, data }) => {
   // Use the state and functions returned from useTable to build UI
@@ -91,13 +91,13 @@ const Table = ({ columns, data }) => {
                       {column.isSorted ? (
                         <>
                           {column.isSortedDesc ? (
-                            <ArrowSmDownIcon className="text-black" />
+                            <ArrowDownIcon className="text-black" />
                           ) : (
-                            <ArrowSmUpIcon className="text-black" />
+                            <ArrowUpIcon className="text-black" />
                           )}
                         </>
                       ) : (
-                        <SwitchVerticalIcon className="text-gray-400" />
+                        <ArrowsRightLeftIcon className="text-gray-400" />
                       )}
                     </div>
                     {column.render("Header")}

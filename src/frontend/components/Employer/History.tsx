@@ -1,9 +1,7 @@
 import {
   CheckCircleIcon,
-  DotsCircleHorizontalIcon,
-  DownloadIcon,
-  UploadIcon,
-} from "@heroicons/react/outline";
+  EllipsisHorizontalIcon,
+} from "@heroicons/react/24/outline";
 import React from "react";
 import "../../utils/stringPrototype";
 
@@ -88,7 +86,7 @@ const HistoryItem = ({
           </span>
         ) : (
           <span className="flex flex-row items-center justify-center">
-            <DotsCircleHorizontalIcon className="w-6" /> Pending
+            <EllipsisHorizontalIcon className="w-6" /> Pending
           </span>
         )}
       </div>
