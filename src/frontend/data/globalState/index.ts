@@ -29,9 +29,9 @@ export const UserRoleState = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
-export const EditingItemState = atom({
-  key: "EditingItemState",
-  default: {} as EditingItem,
+export const EditingItemIdState = atom({
+  key: "EditingItemIdState",
+  default: null as string | null,
 });
 
 export const UserDataState = atom({

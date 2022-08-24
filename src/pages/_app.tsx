@@ -14,9 +14,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <RecoilRoot>
-      <ToastContainer />
-      <ModalContainer />
       <QueryClientProvider client={queryClient}>
+        <ToastContainer />
+        <ModalContainer />
         <Layout>
           <Component {...pageProps} />
         </Layout>

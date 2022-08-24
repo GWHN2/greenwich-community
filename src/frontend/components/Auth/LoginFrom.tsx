@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { useSetRecoilState } from "recoil";
 import API from "../../data/api";
 import { UserDataState, UserRoleState } from "../../data/globalState";
+import { ACCESS_TOKEN } from "../../data/localStorage";
 import Button from "../common/Button";
 import HookForm from "../common/HookForm";
 import Titles from "../common/Titles";
@@ -43,6 +44,7 @@ const LoginFrom = () => {
       setUserData(_userData);
       setUserRole(_userData?.roles[0]?.name);
       toast.success("Login Successful as " + _userData.username);
+      localStorage.setItem(ACCESS_TOKEN, _userData.access_token);
       router.push("/");
     } catch (error) {
       console.log(error);

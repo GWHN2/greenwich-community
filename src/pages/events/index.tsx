@@ -1,13 +1,12 @@
 import Head from "next/head";
 import { useSetRecoilState } from "recoil";
-import Button from "../frontend/components/common/Button";
-import { EventList } from "../frontend/components/Event";
-import { ShowingModalState } from "../frontend/data/globalState";
-import { APP } from "../frontend/enum";
+import Button from "../../frontend/components/common/Button";
+import { EventList } from "../../frontend/components/Event";
+import { ShowingModalState } from "../../frontend/data/globalState";
+import { APP } from "../../frontend/enum";
 
 const Event = () => {
   const setShowingModal = useSetRecoilState(ShowingModalState);
-
   return (
     <div className="h-full ">
       <Head>

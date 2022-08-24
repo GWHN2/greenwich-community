@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import { Controller, useForm } from "react-hook-form";
 import TextInput from "./TextInput";
 
@@ -24,14 +24,20 @@ const HookForm = (props: IHookFormProps) => {
   } = props;
   const {
     control,
-    setValue,
+    reset,
     getValues,
     watch,
 
     formState: { errors },
   } = useForm({
-    defaultValues: defaultValues,
+    defaultValues: useMemo(() => {
+      return defaultValues;
+    }, [defaultValues]),
   });
+
+  useEffect(() => {
+    reset(defaultValues);
+  }, [defaultValues]);
 
   return (
     <div className={`grid w-full gap-2 ${className}`}>

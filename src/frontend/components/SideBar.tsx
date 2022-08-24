@@ -33,12 +33,12 @@ const SideBar = () => {
           {
             title: "Manage Courses",
             icon: <BookOpenIcon />,
-            path: "/admin/courses",
+            path: "/courses&books",
           },
           {
             title: "Manage Events",
             icon: <SparklesIcon />,
-            path: "/admin/events",
+            path: "/events",
           },
         ];
       case "student":
@@ -76,7 +76,7 @@ const SideBar = () => {
           {
             title: "Event",
             icon: <SparklesIcon />,
-            path: "/event",
+            path: "/events",
           },
           {
             title: "Transfer Tokens",
