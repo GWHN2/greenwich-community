@@ -1,22 +1,11 @@
-import { create } from "ipfs-http-client";
+import { ClipboardDocumentIcon } from "@heroicons/react/24/outline";
 import { useCallback, useState } from "react";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import { FileRejection, useDropzone } from "react-dropzone";
 import { toast } from "react-toastify";
+import StorageClient from "../../utils/StorageClient";
 import Button from "../common/Button";
 import TextInput from "../common/TextInput";
-
-const projectId = process.env.NEXT_PUBLIC_INFURA_PROJECT_ID;
-const projectSecret = process.env.NEXT_PUBLIC_INFURA_PROJECT_SECRET;
-const authorization = "Basic " + btoa(projectId + ":" + projectSecret);
-
-const options = {
-  url: "https://ipfs.infura.io:5001/api/v0",
-  headers: {
-    authorization,
-  },
-};
-
-const client = create(options);
 
 const UploadingFilesToIPFS = ({
   callback,
@@ -57,14 +46,10 @@ const UploadingFilesToIPFS = ({
     try {
       if (selectedFile) {
         setLoading(true);
-        const added = await client.add(selectedFile);
-        console.log("====================================");
-        console.log(added?.cid?.toString());
-        console.log("====================================");
-        const url = `https://greenwich-community.infura-ipfs.io/ipfs/${added.path}`;
-        setFileUrl(url);
+        const imageURI = await new StorageClient().storeFiles(selectedFile);
+        setFileUrl(imageURI);
         if (callback) {
-          callback(url);
+          callback(imageURI);
         }
         toast.success("File uploaded to IPFS successfully");
         setLoading(false);
@@ -77,6 +62,7 @@ const UploadingFilesToIPFS = ({
       console.log("Error uploading file: ", error);
     }
   };
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: { "image/*": [".jpeg", ".jpg", ".png"] },
@@ -88,9 +74,9 @@ const UploadingFilesToIPFS = ({
     <div>
       <div className="relative flex items-center justify-center p-2">
         <div
-          className={`absolute flex items-center justify-center w-full h-full p-2 border-4 
-          rounded-lg cursor-pointer border-blue-200
-          text-xl font-semibold bg-primary-400/60 text-white text-center
+          className={`absolute flex items-center justify-center w-full h-full p-2 border
+          rounded-lg cursor-pointer border-blue-400
+          text-xl font-semibold bg-blue-400/40 text-white text-center
           ${
             selectedFile || fileUrl || isDragActive
               ? "opacity-0 hover:opacity-100"
@@ -122,14 +108,23 @@ const UploadingFilesToIPFS = ({
           Upload
         </Button>
         {fileUrl && (
-          <span>
-            {" "}
-            Click to get Image URL:
+          <span className="flex flex-row items-center justify-center">
+            <div className="w-5 mr-2 text-green-400 cursor-pointer">
+              <CopyToClipboard
+                text={fileUrl}
+                onCopy={() => {
+                  toast.success("Link copied to clipboard");
+                }}
+              >
+                <ClipboardDocumentIcon />
+              </CopyToClipboard>
+            </div>
+            File uploaded to IPFS:
             <a
               href={fileUrl}
               target="_blank"
               rel="noreferrer"
-              className="font-semibold text-blue-400"
+              className="ml-1 font-medium text-blue-500"
             >
               {name}
             </a>
