@@ -37,7 +37,7 @@ const HookForm = (props: IHookFormProps) => {
 
   useEffect(() => {
     reset(defaultValues);
-  }, [defaultValues]);
+  }, [JSON.stringify(defaultValues)]);
 
   return (
     <div className={`grid w-full gap-2 ${className}`}>

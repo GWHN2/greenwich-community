@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
-import logo from "../public/images/logo.png";
 import { APP } from "../frontend/enum";
+import logo from "../public/images/logo.png";
 
 function HomePage() {
   return (

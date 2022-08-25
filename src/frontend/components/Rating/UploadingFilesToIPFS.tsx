@@ -3,6 +3,7 @@ import { useCallback, useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { FileRejection, useDropzone } from "react-dropzone";
 import { toast } from "react-toastify";
+import { MintNFTProps } from "../../service/nft-service";
 import StorageClient from "../../utils/StorageClient";
 import Button from "../common/Button";
 import TextInput from "../common/TextInput";
@@ -10,10 +11,11 @@ import TextInput from "../common/TextInput";
 const UploadingFilesToIPFS = ({
   callback,
 }: {
-  callback?: (url: string) => void;
+  callback?: (metadata: MintNFTProps) => void;
 }) => {
   const [fileUrl, setFileUrl] = useState("");
   const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
   const [selectedFile, setSelectedFile] = useState<File>();
   const [loading, setLoading] = useState(false);
   const onDrop = useCallback(
@@ -49,7 +51,7 @@ const UploadingFilesToIPFS = ({
         const imageURI = await new StorageClient().storeFiles(selectedFile);
         setFileUrl(imageURI);
         if (callback) {
-          callback(imageURI);
+          callback({ url: imageURI, name, description });
         }
         toast.success("File uploaded to IPFS successfully");
         setLoading(false);
@@ -104,9 +106,18 @@ const UploadingFilesToIPFS = ({
           }}
           placeholder="Name"
         />
-        <Button onClick={onSubmit} disabled={loading} loading={loading}>
-          Upload
-        </Button>
+        <TextInput
+          value={description}
+          onChange={(e) => {
+            setDescription(e.target.value);
+          }}
+          placeholder="Description"
+        />
+        <div className="flex items-center justify-center">
+          <Button onClick={onSubmit} disabled={loading} loading={loading}>
+            Upload
+          </Button>
+        </div>
         {fileUrl && (
           <span className="flex flex-row items-center justify-center">
             <div className="w-5 mr-2 text-green-400 cursor-pointer">

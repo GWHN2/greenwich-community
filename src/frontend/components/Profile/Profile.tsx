@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "../common/Button";
 import { useRecoilValue } from "recoil";
 import { UserRoleState } from "../../data/globalState";
+import { getMyNfts } from "../../service/nft-service";
 
 interface Props {
   image: any;
@@ -22,7 +23,18 @@ const Profile = ({
 }: Props) => {
   const router = useRouter();
   const userRole = useRecoilValue(UserRoleState);
-
+  useEffect(() => {
+    (async () => {
+      try {
+        const nft = await getMyNfts();
+        console.log("====================================");
+        console.log(nft);
+        console.log("====================================");
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
   return (
     <div className="relative bg-white rounded-lg shadow-lg">
       <div className="absolute flex justify-center w-full -top-1/3">
