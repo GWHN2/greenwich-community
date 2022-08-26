@@ -1,8 +1,9 @@
 import Head from "next/head";
-import avatar from "../public/images/avatar.png";
 import { OverallGrade, Profile, Rating } from "../frontend/components/Profile";
 import Diplomas from "../frontend/components/Profile/Diplomas";
+import MyNFT from "../frontend/components/Profile/MyNFT";
 import { APP } from "../frontend/enum";
+import avatar from "../public/images/avatar.png";
 
 function Grades() {
   const profile = {
@@ -21,12 +22,13 @@ function Grades() {
   const overallGrade = {
     grades: 8.0,
   };
+
   return (
     <div className="h-full ">
       <Head>
         <title>{APP.APP_NAME} | View Profile</title>
       </Head>
-      <main className="container grid justify-around grid-flow-col grid-rows-3 gap-4 mt-32">
+      <main className="container flex flex-col items-center justify-center mx-auto mt-32 space-y-4">
         <div className="flex justify-center mb-10 flex-nowrap">
           <Profile {...profile} />
           <div className="ml-10 space-y-4">
@@ -34,8 +36,7 @@ function Grades() {
             <OverallGrade {...overallGrade} />
           </div>
         </div>
-
-        <Diplomas />
+        <MyNFT />
       </main>
     </div>
   );

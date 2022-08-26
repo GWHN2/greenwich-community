@@ -1,12 +1,11 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
-import Button from "../common/Button";
 import { useRecoilValue } from "recoil";
 import { UserRoleState } from "../../data/globalState";
-import { getMyNfts } from "../../service/nft-service";
+import Button from "../common/Button";
+import avatar from "../../../public/images/avatar.png";
 
-interface Props {
+export interface ProfileProps {
   image: any;
   username: string;
   dateOfBirth: string;
@@ -20,27 +19,16 @@ const Profile = ({
   dateOfBirth,
   StudentID,
   numOfToken,
-}: Props) => {
+}: ProfileProps) => {
   const router = useRouter();
   const userRole = useRecoilValue(UserRoleState);
-  useEffect(() => {
-    (async () => {
-      try {
-        const nft = await getMyNfts();
-        console.log("====================================");
-        console.log(nft);
-        console.log("====================================");
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, []);
+
   return (
     <div className="relative bg-white rounded-lg shadow-lg">
       <div className="absolute flex justify-center w-full -top-1/3">
         <div className="w-40 h-40 overflow-hidden rounded-full">
           <Image
-            src={image}
+            src={image || avatar}
             alt="profile picture"
             // layout="fill"
             objectFit="cover"

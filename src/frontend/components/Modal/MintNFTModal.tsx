@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { useRecoilState } from "recoil";
-import { ShowingModalState } from "../../data/globalState";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { SessionDataState, ShowingModalState } from "../../data/globalState";
 import { mintNFT, MintNFTProps } from "../../service/nft-service";
 import Button from "../common/Button";
 import Modal from "../common/Modal";
@@ -11,6 +11,8 @@ const MintNFTModal = () => {
   const [showingModal, setShowingModal] = useRecoilState(ShowingModalState);
   const [metadata, setMetadata] = useState<MintNFTProps>();
   const [loading, setLoading] = useState(false);
+  const sessionData = useRecoilValue(SessionDataState);
+
   const handleMint = async () => {
     if (!metadata) {
       toast.error("Please select a file to upload");
@@ -18,7 +20,10 @@ const MintNFTModal = () => {
     }
     setLoading(true);
     try {
-      const mintNFTresponse = await mintNFT(metadata);
+      const mintNFTresponse = await mintNFT({
+        ...metadata,
+        owner: sessionData?.principalId as string,
+      });
       console.log(mintNFTresponse);
       if (mintNFTresponse.Ok) {
         toast.success("NFT minted successfully");

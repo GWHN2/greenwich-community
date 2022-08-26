@@ -1,6 +1,7 @@
 // Version: 1.0.0
 type TokenId = Nat;
-type metadata = {description : Text; name : Text; url : Text};
+type metadata =
+  {description : Text; name : Text; owner : Principal; url : Text};
 actor {
   stable var TokenCounter : Nat;
   stable var addressApproveAllTmp : [(Principal, [Principal])];

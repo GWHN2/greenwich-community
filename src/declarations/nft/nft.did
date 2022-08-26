@@ -2,6 +2,7 @@ type metadata =
  record {
    description: text;
    name: text;
+   owner: principal;
    url: text;
  };
 type TxReceipt = 
@@ -15,6 +16,7 @@ type NftResp =
    description: text;
    id: nat;
    name: text;
+   owner: principal;
    url: text;
  };
 type Nft = 
@@ -26,7 +28,7 @@ type Nft =
                             metadata;
                           }) query;
    getApproved: (TokenId) -> (principal) query;
-   getMyNfts: () -> (vec NftResp) query;
+   getMyNfts: (principal) -> (vec NftResp) query;
    getName: () -> (text) query;
    getOwnerCanister: () -> (principal) query;
    getSymbol: () -> (text) query;

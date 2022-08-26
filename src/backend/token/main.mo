@@ -26,7 +26,7 @@ shared({caller}) actor class Token() {
 	
 	stable var symbol_ : Text = "UoG";
 	
-	stable var fee_ : Nat = 1000;
+	stable var fee_ : Nat = 1;
 	
 	stable var owner_ : Principal = caller;
 	

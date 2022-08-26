@@ -1,4 +1,5 @@
 import { HttpAgent } from "@dfinity/agent";
+import { Principal } from "@dfinity/principal";
 
 export type UserRole = "Student" | "Admin" | "Employer";
 
@@ -35,4 +36,12 @@ export type EventData = {
   imageUrl: string;
   code: string;
   tokens: number;
+};
+
+export type NFTData = {
+  description: string;
+  id: number;
+  name: string;
+  owner: Principal;
+  url: string;
 };

@@ -9,12 +9,14 @@ export const idlFactory = ({ IDL }) => {
   const BalanceResult = IDL.Variant({ 'Ok' : IDL.Nat, 'Err' : ApiError });
   const metadata = IDL.Record({
     'url' : IDL.Text,
+    'owner' : IDL.Principal,
     'name' : IDL.Text,
     'description' : IDL.Text,
   });
   const NftResp = IDL.Record({
     'id' : IDL.Nat,
     'url' : IDL.Text,
+    'owner' : IDL.Principal,
     'name' : IDL.Text,
     'description' : IDL.Text,
   });
@@ -29,7 +31,7 @@ export const idlFactory = ({ IDL }) => {
         ['query'],
       ),
     'getApproved' : IDL.Func([TokenId], [IDL.Principal], ['query']),
-    'getMyNfts' : IDL.Func([], [IDL.Vec(NftResp)], ['query']),
+    'getMyNfts' : IDL.Func([IDL.Principal], [IDL.Vec(NftResp)], ['query']),
     'getName' : IDL.Func([], [IDL.Text], ['query']),
     'getOwnerCanister' : IDL.Func([], [IDL.Principal], ['query']),
     'getSymbol' : IDL.Func([], [IDL.Text], ['query']),

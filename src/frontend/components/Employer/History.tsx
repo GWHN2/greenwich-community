@@ -3,7 +3,6 @@ import {
   EllipsisHorizontalIcon,
 } from "@heroicons/react/24/outline";
 import React from "react";
-import "../../utils/stringPrototype";
 
 const History = () => {
   const historyList = [

@@ -14,7 +14,7 @@ export interface Nft {
   'balanceOf' : ActorMethod<[Principal], BalanceResult>,
   'getAllNfts' : ActorMethod<[], Array<[TokenId, metadata]>>,
   'getApproved' : ActorMethod<[TokenId], Principal>,
-  'getMyNfts' : ActorMethod<[], Array<NftResp>>,
+  'getMyNfts' : ActorMethod<[Principal], Array<NftResp>>,
   'getName' : ActorMethod<[], string>,
   'getOwnerCanister' : ActorMethod<[], Principal>,
   'getSymbol' : ActorMethod<[], string>,
@@ -29,6 +29,7 @@ export interface Nft {
 export interface NftResp {
   'id' : bigint,
   'url' : string,
+  'owner' : Principal,
   'name' : string,
   'description' : string,
 }
@@ -37,6 +38,7 @@ export type TxReceipt = { 'Ok' : boolean } |
   { 'Err' : ApiError };
 export interface metadata {
   'url' : string,
+  'owner' : Principal,
   'name' : string,
   'description' : string,
 }

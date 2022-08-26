@@ -34,7 +34,7 @@ export const EditingItemIdState = atom({
   default: null as string | null,
 });
 
-export const UserDataState = atom({
+export const UserDataState = atom<UserData>({
   key: "UserDataState",
   default: {} as UserData,
   effects_UNSTABLE: [persistAtom],

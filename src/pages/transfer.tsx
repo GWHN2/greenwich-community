@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { APP } from "../frontend/enum";
-import Form from "../frontend/components/Transfer/Form";
+import TransferFrom from "../frontend/components/Transfer/TransferFrom";
 
 const Transfer = () => {
   const inputs: any = [
@@ -24,7 +24,7 @@ const Transfer = () => {
         <title>{APP.APP_NAME} | Transfer</title>
       </Head>
       <main className="container flex flex-col items-center justify-center mt-32">
-        <Form inputs={inputs} />
+        <TransferFrom />
       </main>
     </div>
   );

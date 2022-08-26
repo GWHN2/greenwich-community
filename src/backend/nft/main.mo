@@ -129,7 +129,7 @@ shared(msg) actor class Nft() = Self{
       return Iter.toArray<(TokenId, Types.metadata)>(tokenIdToMetadata.entries());
   };
 
-  public shared query({caller}) func getMyNfts(): async [Types.NftResp] {
+  public shared query({caller}) func getMyNfts(principalId : Principal): async [Types.NftResp] {
     var tokenIds = Buffer.Buffer<(TokenId)>(0);
     Iter.iterate(
         tokenIdToOwner.entries(),func ((tokenId: TokenId, owner: Principal), index: Nat) {
@@ -141,15 +141,17 @@ shared(msg) actor class Nft() = Self{
     var result = Buffer.Buffer<Types.NftResp>(10);
     for (i in Iter.fromArray(tokenIds.toArray())) {
       var data = _unwrap(tokenIdToMetadata.get(i));
+        if (data.owner == principalId){
+            var new_data: Types.NftResp = {
+                id= i;
+                name= data.name;
+                url= data.url;
+                description= data.description;
+                owner= data.owner;
+            };
 
-      var new_data: Types.NftResp = {
-        id= i;
-        name= data.name;
-        url= data.url;
-        description= data.description;
-      };
-
-      result.add(new_data);
+            result.add(new_data);
+        };
     };
 
     return result.toArray();

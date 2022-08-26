@@ -14,6 +14,7 @@ module {
         name: Text;
         url: Text;
         description: Text;
+        owner: Principal;
     };
 
     public type ApiError = {
@@ -33,6 +34,7 @@ module {
         name: Text;
         url: Text;
         description: Text;
+        owner: Principal;
     };
 
     public type OwnerResult = Result<Principal, ApiError>;

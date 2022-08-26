@@ -71,14 +71,11 @@ const CourseList = () => {
       }/courses-5/edit`,
     },
   ];
+
   return (
     <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-4">
       {courses.map((course, index) => {
-        return (
-          <div key={index}>
-            <Course {...course} />
-          </div>
-        );
+        return <div key={index}>{/* <Course {...course} /> */}</div>;
       })}
     </div>
   );
